@@ -68,11 +68,6 @@ Template.main.helpers({
   },
 });
 
-
-
-
-
-
 Template.main.events({
   'click button'(event, instance) {
     // increment the counter when button is clicked
@@ -84,20 +79,33 @@ Template.main.events({
     instance.message.set("you pressed the nice button");
   },
   "click [data-action='quack']"(event, instance) {
+    instance.message.set("Trying to get location...");
 
-     var opt = { setView: true,
-                 maxZoom: 16 };
-     instance.map.locate(opt);
+    if (navigator.geolocation)
+    { 
+      navigator.geolocation.getCurrentPosition(
+        function(pos)
+        {
+          var msg = "Latitude: " + pos.coords.latitude + 
+                    " Longitude: " + pos.coords.longitude;
+          instance.message.set(pos.coords);
+        });
+    }
+    else
+    {
+      instance.message.set("Error. Geolocation not available");
+    }
 
-     instance.map.on("locationfound", function(e){
-
-        var marker = L.marker(e.latlng);
-        marker.addTo(instance.map);
-        marker.bindPopup("This is your location").openPopup();
-
-        instance.counter.set(999);
-        instance.message.set(e.latlng);
-     });
+    var opt = { setView: true, maxZoom: 16 };
+    instance.map.locate(opt);
+    instance.map.on("locationfound", function(e){
+       var marker = L.marker(e.latlng);
+       marker.addTo(instance.map);
+       marker.bindPopup("This is your location").openPopup();
+       instance.message.set(e.latlng);
+    });
 
   },
 });
+
+

@@ -1,0 +1,123 @@
+<head>
+   <title>Honey! I Hit A Roo!</title>
+   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+   <meta name="viewport" content="width=device-width, initial-scale=1"/>
+</head>
+
+<body>
+   {{> main}}
+</body>
+
+
+<template name="main">
+
+   <div class="container">
+
+      <div class="card-panel flow-text header">
+         <div class="col s12 m2 l2 center-align hide-on-med-and-up" style="padding-top: 2vh">
+            <img width="96vh"
+                src="cp-logo-light-hires.png">
+         </div>
+         <div class="row">
+            <div class="col s12 m2 l2 right-align hide-on-small-only">
+               <a href="https://sites.google.com/view/roohitgovhack">
+                  <img width="128vh"
+                        src="epic-win.jpg">
+               </a>
+            </div>
+            <div class="col s12 m10 l10">
+               <h4>Honey! I Hit A Roo!</h4>
+               <div class="header-subtitle">What to do when you hit a kangaroo?!</div>
+            </div>
+         </div>
+      </div>
+
+
+
+      <ul class="collapsible" data-collapsible="accordion">
+         <li>
+            <div class="collapsible-header"><i class="material-icons">info</i>Have you hit an animal on the road recently?</div>
+            <div class="collapsible-body">
+               <p>
+               Maybe a kangaroo jumped on your path or a bird hit your vehicle on the way to the snowies?
+               <br><br>
+               As a good samaritan, you want to help the animal with its injuries would like to report the collision to the local wildlife authorities you may want to claim insurance for the damage caused to your vehicle due to the collision.
+               <br><br>
+               This website will assist in capturing the collision data as well as direct the wildlife local authority to address the injured animal.
+               </p>
+            </div>
+         </li>
+      </ul>
+
+
+      <div class="card-panel">
+
+         <!-- <div class="input-field"> -->
+            <input id="search" placeholder="2619, Threadbo, Braddon..." type="text" class="validate">
+            <!-- <label for="search">Search</label> -->
+         <!-- </div> -->
+
+         <div id='map' ></div>
+
+         <div class="center-align" style="margin-top:2vh">
+            <a class="waves-effect waves-light btn green darken-2"
+               data-action="quack">
+               <i class="material-icons right">my_location</i>
+               My Location
+            </a>
+         </div>
+
+      </div>
+
+
+      <div class="card-panel grey lighten-4 flow-text hoverable">
+         <div class="row">
+            <p class="col s12 text-lighten-1" >
+               The point of this is not to use a form. So ignore this for now.
+            </p>
+            <form class="col s12">
+               <div class="row">
+                  <div class="input-field col s12">
+                     <textarea placeholder="E.g., The kangaroo was blue and had a mohawk." id="comments" class="materialize-textarea"></textarea>
+                     <label for="comments">Comments</label>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="input-field col s12 m6 l6">
+                     <input id="name" type="text" class="validate">
+                     <label for="name">Name</label>
+                  </div>
+                  <div class="input-field col s12 m6 l6">
+                     <input id="postcode" type="text" class="validate">
+                     <label for="postcode">Postcode</label>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="input-field col s12 m6 l6">
+                     <input id="email" type="text" class="validate">
+                     <label for="email">Email</label>
+                  </div>
+                  <div class="input-field col s12 m6 l6">
+                     <input id="contact" type="text" class="validate">
+                     <label for="contact">Contact Number</label>
+                  </div>
+               </div>
+            </form>
+         </div>
+      </div>
+
+      <div class="right-align" style="padding-top:1vh">
+         <a class="waves-effect waves-light btn-large green darken-2" data-action="submit-suggest"><i class="material-icons right">send</i>Submit</a>
+      </div>
+
+      <br>
+
+      <div class="card-panel grey lighten-4 flow-text footer-text right-align" style="margin-top:40vh !important">
+         <p>Sanity check counter: {{counter}} times.<br>
+            Program Messages: {{message}}
+         </p>
+      </div>
+
+   </div>
+
+</template>

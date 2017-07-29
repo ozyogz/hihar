@@ -1,0 +1,32 @@
+/* CSS declarations go here */
+
+body, html
+{
+    background-color: #EDEDED !important;
+    color: #79BD8F !important;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight: 100;
+}
+
+#map
+{
+   min-height: 450px;
+   min-width: 100%;
+}
+
+.header
+{
+   background-color: #79BD8F !important;
+   color: #FAFAFA !important;
+   padding-top: 6vh;
+}
+
+.footer-text
+{
+   font-size: 80% !important;
+}
+
+.header-subtitle
+{
+   font-size: 70% !important;
+}

@@ -24,3 +24,5 @@ bevanhunt:leaflet
 tarang:ssl
 shell-server
 dynamic-import
+mdg:geolocation
+mdg:camera

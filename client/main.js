@@ -3,12 +3,23 @@ import { ReactiveVar } from 'meteor/reactive-var';
 
 import './main.html';
 
+// Router.route('/', function () {
+//   // render the Home template with a custom data context
+//   this.render('Home', {data: {title: 'Honey! I Hit A Roo!'}});
+// });
+
+// // when you navigate to "/one" automatically render the template named "One".
+// Router.route('/one');
+
+// // when you navigate to "/two" automatically render the template named "Two".
+// Router.route('/two');
+
+
 Template.main.onCreated(function mainOnCreated() {
    this.counter = new ReactiveVar(0);
    this.message = new ReactiveVar("");
    this.map;
 });
-
 
 Template.main.onRendered(function mainOnRendered()
 {
@@ -27,11 +38,6 @@ Template.main.onRendered(function mainOnRendered()
          .setView(bgn, 13);
 
       L.tileLayer.provider('Thunderforest.Transport').addTo(map);
-
-      // var bgnMsg = "<b>Hello!</b><br>Search a location above.<br>Pinpoint your current location with the button below.";
-      // var marker = L.marker(bgn);
-      // marker.addTo(map);
-      // marker.bindPopup(bgnMsg).openPopup();
 
       L.control.zoom().setPosition('bottomright').addTo(map);
 
@@ -104,8 +110,20 @@ Template.main.events({
        marker.bindPopup("This is your location").openPopup();
        instance.message.set(e.latlng);
     });
-
   },
+  "click [data-action='takePicture']": function(e, instance) {
+        e.preventDefault();
+        instance.message.set("taking picture");
+        var cameraOptions = {
+            width: 640,
+            height: 480
+        };
+        MeteorCamera.getPicture(cameraOptions, function (error, data) {
+           if (!error) {
+               instance.$('.photo').attr('src', data);
+           }
+        });
+    }
 });
 
 
